@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>recklessGreeds Fernseher</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://recklessGreed.de/fernsehen_node/mode-1.css">
+	<link rel="stylesheet" type="text/css" href="http://recklessGreed.de/fernsehen_node/mode-2.css">
+	<link rel="stylesheet" type="text/css" href="http://recklessGreed.de/fernsehen_node/mode-3.css">	
+	<style>				
+		#screen {
+			width: 99vw;
+			height: 99vh;
+			overflow: hidden;
+			position: fixed;	
+			z-index: -1;					
+		}
+
+		#youtube {
+			width: 99vw;
+			height: 99vh;
+			overflow: hidden;
+			position: fixed;	
+			z-index: -2;					
+		}
+
+		.butt {
+			width: 200px;
+			height: 40px;
+		}
+		
+		input {
+			width: 200px;
+			height:100px;
+			font-size: 48px;
+			font-style: normal;
+			font-weight: bold;
+			text-decoration: none;
+			text-transform: none;
+			color: #000000;
+			background-color: #ffffff;
+		}
+
+		invisible {
+			width: 300px;
+			height: 80vh;
+			z-index: -1;
+		}
+
+		.front {
+			/*width: 100vw;
+			height: 100vh;*/
+			outline: 0;
+		}
+		
+		.invisible button {
+			
+			color: transparent;
+			background-color: transparent;
+			border-color: transparent;		
+		}
+
+		.invisible input {
+			display: none;
+		}
+
+		#menu-inner ul
+		{
+			list-style-type:none;
+			padding:0px;
+			margin:0px;
+		}
+
+		#menu-inner li
+		{
+			background-image:url(sqpurple.gif);
+			background-repeat:no-repeat;
+			background-position:0px 5px; 
+			padding-left:14px;
+			
+		}
+
+		/*.back {
+			z-index: 0;
+		}*/
+	</style>
+</head>
+
+<body scroll="no" style="background-color: #000000">
+	<div class="invisible"></div>
+	<div id="main-content-wrapper">
+		<div id="main-content">
+			<iframe id="screen" src='https://player.twitch.tv/?channel=rocketbeanstv' scrolling="no"></iframe>
+			<div id="youtube"></div>		
+		</div>
+		<div id="menu-inner" class="front invisible" onmousemove="checkMousePosition(event)">
+			<ul>
+				<li><button class="butt" type="button" onclick="switchChannel('nick')"> Nickelodeon </button></li>
+				<li><button class="butt" type="button" onclick="switchChannel('p7')"> ProSieben </button></li>            
+				<li><button class="butt" type="button" onclick="switchChannel('maxx')"> P7 MAXX</button></li>
+				<li><button class="butt" type="button" onclick="switchChannel('sport1')"> Sport 1</button></li>            
+				<li><button class="butt" type="button" onclick="switchChannel('ard')"> ARD</button></li>
+				<li><button class="butt" type="button" onclick="switchChannel('zdf')"> ZDF</button></li>
+				<li><button class="butt" type="button" onclick="switchChannel('disney')"> Disney</button></li>            
+				<li><button class="butt" type="button" onclick="switchChannel('zander')"> Zander</button></li>
+				<li><button class="butt" type="button" onclick="switchChannel('keizaron')"> Keizaron</button></li>            
+				<li><button class="butt" type="button" onclick="switchChannel('earliboy')"> earliboy</button></li>
+				<li><button class="butt" type="button" onclick="switchChannel('rocketbeans')"> RBTV </button></li>
+				<li><button class="butt" type="button" onclick="switchChannel('nflnetwork')"> NFL Network </button></li>
+				<li><input id="unique_ID" disabled></li>
+				<li><button class="butt" type="button" disabled> Version 1.1 </button></li>
+			</ul>
+		</div>
+		<script src="http://www.youtube.com/iframe_api"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script type="text/javascript">
+            var socket = io();			
+
+			var youtube_list = [];
+            var current = 0;
+
+            var screentype = "iframe";
+			var player;
+			
+			var mode = "-1";
+
+			function switchChannel(channel) {
+				if (channel === "youtube_play" && screentype === "iframe") {
+					
+				
+					document.getElementById("screen").style.zIndex = "-2";
+					document.getElementById("screen").src = "";
+					document.getElementById("youtube").style.zIndex = "-1";
+					screentype = "video";
+				
+				}
+				else if (channel.indexOf("youtube") == -1 && screentype === "video")
+				{
+				
+					document.getElementById("screen").style.zIndex = "-1";
+					document.getElementById("youtube").style.zIndex = "-2";
+					screentype = "iframe";
+				}	
+			
+				console.log("PLAYER:");
+				console.log(player);	
+				
+				var screen = document.getElementById("screen");
+				if (channel == 'nick') {
+					screen.src = "http://www.nick.de//live#video-element";
+					screen.classList = "nick"+mode;
+				}
+				else if (channel == 'p7') {
+					screen.src = "https://www.prosieben.de/livestream#k-stage";
+					screen.classList = "p7"+mode;
+				}
+				else if (channel == 'maxx') {
+					screen.src = "https://www.prosiebenmaxx.de/livestream#k-stage";
+					screen.classList = "p7"+mode;
+				}
+				else if (channel == 'sport1') {
+					screen.src = "https://tv.sport1.de/sport1/#jwplayer";
+					screen.classList = "sport1"+mode;
+				}
+				else if (channel == 'ard') {
+					screen.src = 'https://live.daserste.de'
+					screen.classList = "ard"+mode;
+				}
+				else if (channel == 'disney') {
+					screen.src = 'http://tv.disney.de/disney-channel#videoDisplay'
+					screen.classList = "disney"+mode;
+				}
+				else if (channel == 'zdf') {
+					screen.src = 'https://www.zdf.de/live-tv'
+					screen.classList = "zdf"+mode;
+				}
+				else if (channel == 'nflnetwork') {
+					screen.src = 'https://www.nflgamepass.com/en/network';
+					screen.classList = "nfl"+mode;
+				}
+				else if (channel == 'zander') {
+					screen.src = 'https://player.twitch.tv/?channel=zanderlp'
+					screen.classList = "twitch";
+				}
+				else if (channel == 'keizaron') {
+					screen.src = 'https://player.twitch.tv/?channel=keizaron'
+					screen.classList = "twitch";
+				}
+				else if (channel == 'earliboy') {
+					screen.src = 'https://player.twitch.tv/?channel=earliboy'
+					screen.classList = "twitch";
+				}
+				else if (channel == 'rocketbeans') {
+					screen.src = 'https://player.twitch.tv/?channel=rocketbeanstv'
+					screen.classList = "twitch";
+				}
+				else if (channel == 'gdq') {
+					screen.src = 'https://player.twitch.tv/?channel=gamesdonequick'
+					screen.classList = "twitch";
+				}
+				else if (channel.split("#?#")[0] == 'custom_twitch') {
+					screen.src = 'https://player.twitch.tv/?channel='+channel.split("#?#")[1];
+					screen.classList = "twitch"
+				}
+				else if (channel == 'youtube_play') {
+					player.loadVideoById(youtube_list[current], 0, "large");
+					player.playVideo();
+				}
+				else if (channel.split("#?#")[0] == 'youtube_add') {
+					var url = channel.split("#?#")[1];
+					if (url.indexOf(".be/") != -1)					
+					{	youtube_list.push(channel.split(".be/")[1]); }
+					else if (url.indexOf("watch") != -1) 
+					{youtube_list.push(channel.split("?v=")[1]);}
+
+				}
+				else if (channel == 'youtube_skip') {
+					current++;
+					player.loadVideoById(youtube_list[current], 0, "large");
+				}
+				else if (channel.split("#?#")[0] == 'netflix') {
+					var url = channel.split("#?#")[1];
+					screen.src = "https://" + url.replace('title', 'watch');
+					screen.classList = "";
+
+				}
+				console.log("Channel: \n" + channel);
+				console.log(youtube_list);
+				
+			}
+
+			function checkMousePosition(e) {
+				var x = e.clientX;
+				var y = e.clientY;		
+				if (x < 200 && x > 100) {					
+					document.getElementById("menu-inner").classList = "front";
+				}
+				else {
+					document.getElementById("menu-inner").classList = "front invisible";
+				}
+			}
+
+			$(document).ready(function() { 
+				var unique_ID;
+				var url = window.location.href;
+				var query = url.split("?")[1];
+				var unique_given = false;
+				if (query.indexOf('&') != -1) {
+					query = query.split("&");
+				}
+				else
+				{
+					query = query.split(' ');
+				}
+				
+				query.forEach( function(part){
+					if (part.indexOf("ID") !== -1) 
+					{
+						unique_ID = part.split("=")[1];
+						unique_given = true;
+					}
+				});
+
+				
+				if (!unique_given)
+				{
+					unique_ID = Math.floor(Math.random() * 8999) + 1000;
+					var stateObj = { foo: "bar" };
+					history.pushState(stateObj, "page 2", "?ID="+unique_ID);
+				}
+				document.getElementById("unique_ID").value = unique_ID;
+				console.log("LOG: setProperty");
+				console.log("LOG: screenx " + window.innerWidth
+				);
+				if (window.innerWidth < 1500)
+				{
+					mode = "-2";
+				} 			
+				console.log("LOG: WIDTH")
+				console.log("LOG: Mode " + mode);
+			});
+			
+
+
+			$(function () {
+				socket.on('change', function(msg)
+				{
+					var splitted = msg.split("#§#");
+					if(document.getElementById('unique_ID').value === splitted[0])
+					{
+						switchChannel(splitted[1]);
+					}
+				});
+			})
+		
+			function onYouTubeIframeAPIReady() {
+				player = new YT.Player('youtube', {
+				videoId: "",
+				events: {
+					'onStateChange': onPlayerStateChange
+				}
+				});
+			}
+		
+			function onPlayerStateChange(event) {        
+				if(event.data === 0) {            
+					current++;
+					player.loadVideoById(youtube_list[current], 0, "large");
+				}
+			}
+			var buttons = "<ul>\n" + 
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('nick')\"> Nickelodeon </button></li>\n" + 
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('p7')\"> ProSieben </button></li>\n" +             
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('maxx')\"> P7 MAXX</button></li>\n" + 
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('sport1')\"> Sport 1</button></li>\n" +             
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('ard')\"> ARD</button></li>\n" + 
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('zdf')\">ZDF</button></li>\n" + 
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('disney')\">Disney</button></li>\n" +             
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('zander')\"> Zander</button></li>\n" + 
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('keizaron')\"> Keizaron</button></li>\n" +             
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('earliboy')\"> earliboy</button></li>\n" + 
+				"<li><button class=\"butt\" type=\"button\" onclick=\"switchChannel('rocketbeans')\"> RBTV </button></li>\n" +
+				"<li><input id=\"unique_ID\" disabled></li>\n" +
+				"<li><button class=\"butt\" type=\"button\" disabled> Version 1.0 </button></li>\n"+
+			"</ul>";
+		</script>
+		<script type="application/javascript" defer="" src="https://datalayer.p7s1.io/mxd_data_layer.min.js"></script>
+
+	</div>
+</body>
+
+</html>

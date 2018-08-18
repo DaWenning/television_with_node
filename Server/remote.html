@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style>		
+        button {
+			-webkit-appearance: none;
+            width: 32vw;
+            height: 32vw;
+        }
+
+        .textbox {
+            width: 99vw;
+            height: 100px;
+            font-size: 60px; 
+        }
+
+		.bild {
+			width: 30vw;
+            height: 30vw;
+		}
+		.invisible {
+			color: transparent;
+			background-color: transparent;
+			border-color: transparent;
+			height: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="main-content-wrapper">
+		<div id="main-content">
+			<input id="unique_ID" class="textbox">
+			<br>
+			<button type="button" onclick="switchChannel('nick')">	 <img class="bild">NICK</button>
+			<button type="button" onclick="switchChannel('p7')"> 	 <img class="bild">Pro7</button>
+			<button type="button" onclick="switchChannel('maxx')"> 	 <img class="bild">P7_MAXX</button>
+			<br>
+			<button type="button" onclick="switchChannel('sport1')"> <img class="bild">SPORT1</button>
+			<button type="button" onclick="switchChannel('ard')"> 	 <img class="bild">ARD</button>
+			<button type="button" onclick="switchChannel('zdf')"> 	 <img class="bild">ZDF</button>
+			<br>
+			<button type="button" onclick="switchChannel('disney')"> <img class="bild">DISNEY</button>
+			<button type="button" onclick="switchChannel('zander')"> <img class="bild">ZANDERLP</button>
+			<button type="button" onclick="switchChannel('keizaron')"> <img class="bild">KEIZARON</button>
+			<br>
+			<button type="button" onclick="switchChannel('earliboy')"> <img class="bild">EARLIBOY</button>
+			<button type="button" onclick="switchChannel('gdq')">      <img class="bild">GAMESDONEQUICK</button>
+			<button type="button" onclick="switchChannel('rocketbeans')"> <img class="bild">RBTV</button>
+			<br>
+			<input id="custom_twitch" class="textbox">
+			<button type="button" onclick="switchChannel('nflnetwork')"><img class="bild">NFL_NETWORK</button>
+			<button type="button" onclick="switchChannel('custom_twitch')"> <img class="bild">CUST_TWITCH</button>
+			<button type="button" onclick="switchChannel('netflix')"><img class="bild" disabled></button>
+			<input id="custom_youtube" class="textbox">
+			<button type="button" onclick="switchChannel('youtube_add')"><img class="bild"></button>
+			<button type="button" onclick="switchChannel('youtube_play')"> <img class="bild"></button>
+			<button type="button" onclick="switchChannel('youtube_skip')"><img class="bild"></button>
+			<br>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script type="text/javascript">
+            var socket = io();
+            
+			$("screen").contents().find("video-player").attr("style","width:90vw;height:90vh;")
+			function switchChannel(channel) {
+                var unique = document.getElementById("unique_ID").value;
+				unique = unique.toLowerCase();
+                if (channel == "custom_twitch")
+				{
+					socket.emit('fernbedienung', unique + "#§#" + channel + "#?#" + document.getElementById("custom_twitch").value);
+				}
+				else if (channel == "youtube_add") {
+					socket.emit('fernbedienung', unique + "#§#" + channel + "#?#" + document.getElementById("custom_youtube").value);
+					document.getElementById("custom_youtube").value = "";
+
+				}
+				else if (channel == "netflix") 
+				{
+					socket.emit('fernbedienung', unique + "#§#" + channel + "#?#" + document.getElementById("custom_twitch").value);
+				}
+				else
+				{
+					socket.emit('fernbedienung', unique + "#§#" + channel);
+				}
+				//alert(unique + "#§#" + channel_new);
+			}
+
+			$(document).ready(function() { 
+				var unique_ID;
+				var url = window.location.href;
+
+				if (url.indexOf("ID") !== -1) 
+				{
+					unique_ID = url.split("=")[1];
+					document.getElementById("unique_ID").value = unique_ID;
+				}
+				
+				
+
+				});
+		</script>
+		<script type="application/javascript" defer="" src="https://datalayer.p7s1.io/mxd_data_layer.min.js"></script>
+
+	</div>
+</body>
+
+</html>

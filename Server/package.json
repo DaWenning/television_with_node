@@ -1,0 +1,10 @@
+{
+  "name": "television_with_node",
+  "version": "1",
+  "description": "German Television Online with NodeJS",
+  "dependencies": {
+    "express": "^4.15.2",
+    "quick-local-ip": "^1.0.7",
+    "socket.io": "^2.0.1"
+  }
+}
