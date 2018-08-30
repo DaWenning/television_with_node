@@ -175,10 +175,6 @@
 					screen.src = 'https://www.zdf.de/live-tv'
 					screen.classList = "zdf"+mode;
 				}
-				else if (channel == 'nflnetwork') {
-					screen.src = 'https://www.nflgamepass.com/en/network';
-					screen.classList = "nfl"+mode;
-				}
 				else if (channel == 'zander') {
 					screen.src = 'https://player.twitch.tv/?channel=zanderlp'
 					screen.classList = "twitch";
@@ -221,9 +217,18 @@
 				}
 				else if (channel.split("#?#")[0] == 'netflix') {
 					var url = channel.split("#?#")[1];
-					screen.src = "https://" + url.replace('title', 'watch');
+					window.href.location = "https://" + url.replace('title', 'watch');
 					screen.classList = "";
-
+				}
+				else if (channel.split("#?#")[0] == 'nflnetwork') {
+					if (channel.contains("#?#")) {
+						split = channel.split("#?#");
+						screen.src = 'https://www.nflgamepass.com/en/'+split[1];
+					}
+					else {
+						screen.src = 'https://www.nflgamepass.com/en/network';
+					}
+					screen.classList = "nfl"+mode;
 				}
 				console.log("Channel: \n" + channel);
 				console.log(youtube_list);

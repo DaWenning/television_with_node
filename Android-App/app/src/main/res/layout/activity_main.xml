@@ -23,32 +23,23 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton_ard"
+                <Button
+                    android:id="@+id/button_ard"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/ard" />
+                    android:layout_height="match_parent" 
+                    android:text = "ARD" />
 
-                <ImageButton
-                    android:id="@+id/imageButton_zdf"
+                <Button
+                    android:id="@+id/button_zdf"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/zdf" />
+                    android:layout_height="wrap_content" 
+                    android:text = "ZDF"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_p7"
+                <Button
+                    android:id="@+id/button_p7"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/p7" />
+                    android:layout_height="wrap_content" 
+                    android:text = "ProSieben" />
             </LinearLayout>
 
             <LinearLayout
@@ -57,32 +48,23 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton_nick"
+                <Button
+                    android:id="@+id/button_nick"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/nick" />
+                    android:layout_height="wrap_content" 
+                    android:text = "NICK"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_disney"
+                <Button
+                    android:id="@+id/button_disney"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/disney" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Disney"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_maxx"
+                <Button
+                    android:id="@+id/button_maxx"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/maxx" />
+                    android:layout_height="wrap_content" 
+                    android:text = "P7 MAXX" />
             </LinearLayout>
 
             <LinearLayout
@@ -91,32 +73,23 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton_zander"
+                <Button
+                    android:id="@+id/button_zander"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/zander" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Twitch\nZanderLP"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_sport1"
+                <Button
+                    android:id="@+id/button_sport1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/sport1" />
+                    android:layout_height="wrap_content" 
+                    android:text = "SPORT1" />
 
-                <ImageButton
-                    android:id="@+id/imageButton_keiz"
+                <Button
+                    android:id="@+id/button_keiz"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/keizaron" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Twitch\nKeizaron"/>
             </LinearLayout>
 
             <LinearLayout
@@ -125,32 +98,23 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton_earli"
+                <Button
+                    android:id="@+id/button_earli"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/earliboy" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Twitch\nEarliboy"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_gdq"
+                <Button
+                    android:id="@+id/button_gdq"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/gdq" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Twitch\nGamesDoneQuick"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_rbtv"
+                <Button
+                    android:id="@+id/button_rbtv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/rbtv" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Youtube\nRocketBeansTV"/>
             </LinearLayout>
 
             <EditText
@@ -168,32 +132,23 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton_nflnetwork"
+                <Button
+                    android:id="@+id/button_nflnetwork"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/nfl" />
+                    android:layout_height="wrap_content" 
+                    android:text = "NFL Network"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_twitch"
+                <Button
+                    android:id="@+id/button_twitch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/twitch" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Twitch\nCustom"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_netflix"
+                <Button
+                    android:id="@+id/button_netflix"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@android:drawable/btn_dialog" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Netflix"/>
 
             </LinearLayout>
 
@@ -212,32 +167,23 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton_yt_add"
+                <Button
+                    android:id="@+id/button_yt_add"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/youtube_add" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Add to\nPlaylist"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_yt_start"
+                <Button
+                    android:id="@+id/button_yt_start"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/youtube_start" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Start YouTube\nfrom Playlist"/>
 
-                <ImageButton
-                    android:id="@+id/imageButton_yt_skip"
+                <Button
+                    android:id="@+id/button_yt_skip"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@mipmap/youtube_skip" />
+                    android:layout_height="wrap_content" 
+                    android:text = "Skip Video" />
             </LinearLayout>
 
             <LinearLayout
@@ -246,34 +192,21 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton"
+                <Button
+                    android:id="@+id/button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@android:drawable/btn_dialog" />
+                    android:layout_height="wrap_content" />
 
-                <ImageButton
-                    android:id="@+id/imageButton3"
+                <Button
+                    android:id="@+id/button3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@android:drawable/btn_dialog" />
+                    android:layout_height="wrap_content" />
 
-                <ImageButton
-                    android:id="@+id/imageButton254648"
+                <Button
+                    android:id="@+id/button254648"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@android:drawable/btn_dialog" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 

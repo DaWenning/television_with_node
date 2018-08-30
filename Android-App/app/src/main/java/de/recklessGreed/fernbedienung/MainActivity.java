@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.Button;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 
@@ -16,29 +16,29 @@ import java.net.URISyntaxException;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton imgBtn_ard;
-    ImageButton imgBtn_zdf;
-    ImageButton imgBtn_p7;
+    Button btn_ard;
+    Button btn_zdf;
+    Button btn_p7;
 
-    ImageButton imgBtn_nick;
-    ImageButton imgBtn_disney;
-    ImageButton imgBtn_maxx;
+    Button btn_nick;
+    Button btn_disney;
+    Button btn_maxx;
 
-    ImageButton imgBtn_zander;
-    ImageButton imgBtn_sport1;
-    ImageButton imgBtn_keiz;
+    Button btn_zander;
+    Button btn_sport1;
+    Button btn_keiz;
 
-    ImageButton imgBtn_earli;
-    ImageButton imgBtn_gdq;
-    ImageButton imgBtn_rbtv;
+    Button btn_earli;
+    Button btn_gdq;
+    Button btn_rbtv;
 
-    ImageButton imgBtn_nflnetwork;
-    ImageButton imgBtn_twitch;
-    ImageButton imgBtn_netflix;
+    Button btn_nflnetwork;
+    Button btn_twitch;
+    Button btn_netflix;
 
-    ImageButton imgBtn_yt_add;
-    ImageButton imgBtn_yt_start;
-    ImageButton imgBtn_yt_skip;
+    Button btn_yt_add;
+    Button btn_yt_start;
+    Button btn_yt_skip;
 
     EditText editText_twitch;
     EditText editText_yt;
@@ -76,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
                 else if (receivedText.contains("you")) {
                     editText_yt.setText(receivedText);
                 }
+                else if (receivedText.contains("nfl")) {
+                    editText_twitch.setText(receivedText);
+                }
 
             }
         }
@@ -89,33 +92,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imgBtn_ard        = findViewById(R.id.imageButton_ard);
-        imgBtn_zdf        = findViewById(R.id.imageButton_zdf);
-        imgBtn_p7         = findViewById(R.id.imageButton_p7);
-        imgBtn_nick       = findViewById(R.id.imageButton_nick);
-        imgBtn_disney     = findViewById(R.id.imageButton_disney);
-        imgBtn_maxx       = findViewById(R.id.imageButton_maxx);
-        imgBtn_zander     = findViewById(R.id.imageButton_zander);
-        imgBtn_sport1     = findViewById(R.id.imageButton_sport1);
-        imgBtn_keiz       = findViewById(R.id.imageButton_keiz);
-        imgBtn_earli      = findViewById(R.id.imageButton_earli);
-        imgBtn_gdq        = findViewById(R.id.imageButton_gdq);
-        imgBtn_rbtv       = findViewById(R.id.imageButton_rbtv);
-        imgBtn_nflnetwork = findViewById(R.id.imageButton_nflnetwork);
-        imgBtn_twitch     = findViewById(R.id.imageButton_twitch);
-        imgBtn_netflix    = findViewById(R.id.imageButton_netflix);
-        imgBtn_yt_add     = findViewById(R.id.imageButton_yt_add);
-        imgBtn_yt_start   = findViewById(R.id.imageButton_yt_start);
-        imgBtn_yt_skip    = findViewById(R.id.imageButton_yt_skip);
+        btn_ard        = findViewById(R.id.button_ard);
+        btn_zdf        = findViewById(R.id.button_zdf);
+        btn_p7         = findViewById(R.id.button_p7);
+        btn_nick       = findViewById(R.id.button_nick);
+        btn_disney     = findViewById(R.id.button_disney);
+        btn_maxx       = findViewById(R.id.button_maxx);
+        btn_zander     = findViewById(R.id.button_zander);
+        btn_sport1     = findViewById(R.id.button_sport1);
+        btn_keiz       = findViewById(R.id.button_keiz);
+        btn_earli      = findViewById(R.id.button_earli);
+        btn_gdq        = findViewById(R.id.button_gdq);
+        btn_rbtv       = findViewById(R.id.button_rbtv);
+        btn_nflnetwork = findViewById(R.id.button_nflnetwork);
+        btn_twitch     = findViewById(R.id.button_twitch);
+        btn_netflix    = findViewById(R.id.button_netflix);
+        btn_yt_add     = findViewById(R.id.button_yt_add);
+        btn_yt_start   = findViewById(R.id.button_yt_start);
+        btn_yt_skip    = findViewById(R.id.button_yt_skip);
 
         editText_yt       = findViewById(R.id.editText_yt);
         editText_twitch   = findViewById(R.id.editText_twitch);
-        //imgBtn_earli.setImageURI(Uri.parse("https://static-cdn.jtvnw.net/jtv_user_pictures/e21dc7e298c83e59-profile_image-150x150.png"));
+        //btn_earli.setImageURI(Uri.parse("https://static-cdn.jtvnw.net/jtv_user_pictures/e21dc7e298c83e59-profile_image-150x150.png"));
 
 
         mSocket.connect();
 
-        imgBtn_ard.setOnClickListener(new View.OnClickListener() {
+        btn_ard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#ard");
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_zdf.setOnClickListener(new View.OnClickListener() {
+        btn_zdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#zdf");
@@ -131,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_p7.setOnClickListener(new View.OnClickListener() {
+        btn_p7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i("Wechsel:", "ProSieben");
@@ -141,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_nick.setOnClickListener(new View.OnClickListener() {
+        btn_nick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#nick");
@@ -149,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_disney.setOnClickListener(new View.OnClickListener() {
+        btn_disney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#disney");
@@ -157,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_maxx.setOnClickListener(new View.OnClickListener() {
+        btn_maxx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#maxx");
@@ -165,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_zander.setOnClickListener(new View.OnClickListener() {
+        btn_zander.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#zander");
@@ -173,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_sport1.setOnClickListener(new View.OnClickListener() {
+        btn_sport1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#sport1");
@@ -181,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_keiz.setOnClickListener(new View.OnClickListener() {
+        btn_keiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#keiz");
@@ -189,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_earli.setOnClickListener(new View.OnClickListener() {
+        btn_earli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#earli");
@@ -197,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_gdq.setOnClickListener(new View.OnClickListener() {
+        btn_gdq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#gdq");
@@ -205,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_rbtv.setOnClickListener(new View.OnClickListener() {
+        btn_rbtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#rbtv");
@@ -213,15 +216,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_nflnetwork.setOnClickListener(new View.OnClickListener() {
+        btn_nflnetwork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mSocket.emit("fernbedienung", "reck#§#nflnetwork");
+                String text = editText_twitch.getText().toString());
+
+                if (text.trim().equals("")) {
+                    mSocket.emit("fernbedienung", "reck#§#nflnetwork");
+                }
+                else {
+                    String series = text.split()
+                    mSocket.emit("fernbedienung", "reck#§#nflnetwork#?#"+text);
+                }
+
+
+                
 
             }
         });
 
-        imgBtn_twitch.setOnClickListener(new View.OnClickListener() {
+        btn_twitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#twitch#?#"+editText_twitch.getText().toString());
@@ -229,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_netflix.setOnClickListener(new View.OnClickListener() {
+        btn_netflix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#netflix#?#"+editText_twitch.getText().toString());
@@ -237,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_yt_add.setOnClickListener(new View.OnClickListener() {
+        btn_yt_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#youtube_add#?#"+editText_yt.getText().toString());
@@ -245,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_yt_skip.setOnClickListener(new View.OnClickListener() {
+        btn_yt_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#youtube_skip");
@@ -253,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imgBtn_yt_start.setOnClickListener(new View.OnClickListener() {
+        btn_yt_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mSocket.emit("fernbedienung", "reck#§#youtube_start");
@@ -262,75 +276,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private View.OnClickListener onButtonClick(View view) {
-        String tmp = "reck#$#";
-        final String message;
-
-        switch (view.getId()) {
-            case R.id.imageButton_ard:
-                tmp += "ard";
-                break;
-            case R.id.imageButton_zdf:
-                tmp += "zdf";
-                break;
-            case R.id.imageButton_p7:
-                tmp += "p7";
-                break;
-            case R.id.imageButton_nick:
-                tmp += "nick";
-                break;
-            case R.id.imageButton_disney:
-                tmp += "disney";
-                break;
-            case R.id.imageButton_maxx:
-                tmp += "maxx";
-                break;
-            case R.id.imageButton_zander:
-                tmp += "zander";
-                break;
-            case R.id.imageButton_sport1:
-                tmp += "sport1";
-                break;
-            case R.id.imageButton_keiz:
-                tmp += "keiz";
-                break;
-            case R.id.imageButton_earli:
-                tmp += "earli";
-                break;
-            case R.id.imageButton_gdq:
-                tmp += "gdq";
-                break;
-            case R.id.imageButton_rbtv:
-                tmp += "rbtv";
-                break;
-            case R.id.imageButton_nflnetwork:
-                tmp += "nflnetwork";
-                break;
-            case R.id.imageButton_twitch:
-                tmp += "custom_twitch";
-                break;
-            case R.id.imageButton_yt_add:
-                tmp += "youtube_add";
-                break;
-            case R.id.imageButton_yt_skip:
-                tmp += "youtube_skip";
-                break;
-            case R.id.imageButton_yt_start:
-                tmp += "youtube_start";
-                break;
-            default:
-                tmp = "";
-                break;
-        }
-
-        message = tmp;
-
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mSocket.emit("fernbedienung", message);
-            }
-        };
-    }
 
 }
