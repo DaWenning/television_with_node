@@ -113,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
 
         editText_yt       = findViewById(R.id.editText_yt);
         editText_twitch   = findViewById(R.id.editText_twitch);
-        //btn_earli.setImageURI(Uri.parse("https://static-cdn.jtvnw.net/jtv_user_pictures/e21dc7e298c83e59-profile_image-150x150.png"));
 
 
         mSocket.connect();
@@ -238,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
         btn_twitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mSocket.emit("fernbedienung", "reck#§#twitch#?#"+editText_twitch.getText().toString());
+                mSocket.emit("fernbedienung", "reck#§#custom_twitch#?#"+editText_twitch.getText().toString());
 
             }
         });
