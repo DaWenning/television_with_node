@@ -218,13 +218,13 @@ public class MainActivity extends AppCompatActivity {
         btn_nflnetwork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text = editText_twitch.getText().toString());
+                String text = editText_twitch.getText().toString();
 
                 if (text.trim().equals("")) {
                     mSocket.emit("fernbedienung", "reck#§#nflnetwork");
                 }
                 else {
-                    String series = text.split()
+                    String series = text.split("")[0];
                     mSocket.emit("fernbedienung", "reck#§#nflnetwork#?#"+text);
                 }
 
