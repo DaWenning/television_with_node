@@ -8,7 +8,11 @@ app.get('/', function(req, res){
 });
 
 app.get('/fern', function(req, res){
-  res.sendFile(__dirname + '/fern.html');
+  res.sendFile(__dirname + '/remote.html');
+});
+
+app.get('/remote', function(req, res){
+  res.sendFile(__dirname + '/remote.html');
 });
 
 io.on('connection', function(socket){
